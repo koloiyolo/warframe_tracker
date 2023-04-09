@@ -1,6 +1,7 @@
 
 
 import 'package:warframe_tracker/screens/cycles.dart';
+import 'package:warframe_tracker/screens/fisures.dart';
 
 import 'imports.dart';
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Warframe Tracker',
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.orange
@@ -34,15 +36,15 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int selectedIndex = 0;
-  Widget page = Placeholder();
-  String title = 'Fissures';
+  Widget page = FissuresPage();
+  String title = 'Void Fissures';
 
   @override
   Widget build(BuildContext context) {
     switch (selectedIndex) {
       case 0:
-        page = Placeholder();
-        title = 'Fissures';
+        page = const FissuresPage();
+        title = 'Void Fissures';
         break;
       case 1:
         page = const ArbitrationsPage();
@@ -50,7 +52,7 @@ class _NavBarState extends State<NavBar> {
         break;
       case 2:
         page = const CyclesPage();
-        title = 'Cycles';
+        title = 'World Cycles';
         break;
       case 3:
         page = const SettingsPage();
@@ -66,12 +68,13 @@ class _NavBarState extends State<NavBar> {
             NavigationBar(
               destinations: const [
                 NavigationDestination(
-                  icon: Icon(Icons.abc), label: 'Fissures'),
+                  icon: Icon(Icons.info_outline), label: 'Fissures'),
                 NavigationDestination(
-                    icon: Icon(Icons.abc), label: 'Arbitration'),
-                NavigationDestination(icon: Icon(Icons.abc), label: 'Cycles'),
+                    icon: Icon(Icons.info_outline), label: 'Arbitration'),
                 NavigationDestination(
-                    icon: Icon(Icons.settings), label: 'Settings')
+                  icon: Icon(Icons.info_outline), label: 'Cycles'),
+                NavigationDestination(
+                    icon: Icon(Icons.settings_outlined), label: 'Settings')
               ],
               selectedIndex: selectedIndex,
               onDestinationSelected: (value) {

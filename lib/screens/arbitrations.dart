@@ -20,35 +20,24 @@ Future<Arbi> fetchArbi() async {
 
 class Arbi {
   final String id;
-  final String activation;
-  final String expiry;
   final String node;
   final String enemy;
   final String type;
-  final bool archwing;
-  final bool sharkwing;
 
   const Arbi({
     required this.id,
-    required this.activation,
-    required this.expiry,
     required this.node,
     required this.enemy,
     required this.type,
-    required this.archwing,
-    required this.sharkwing,
+
   });
 
   factory Arbi.fromJson(Map<String, dynamic> json) {
     return Arbi(
       id: json['id'],
-      activation: json['activation'],
-      expiry: json['expiry'],
       node: json['node'],
       enemy: json['enemy'],
       type: json['type'],
-      archwing: json['archwing'],
-      sharkwing: json['sharkwing'],
     );
   }
 }
