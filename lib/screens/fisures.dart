@@ -96,8 +96,8 @@ class _FissuresPageState extends State<FissuresPage> {
             padding: const EdgeInsets.all(8.0),
             child: ExpansionTile(
               title: buildText(snapshot.data![index].isHard
-                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType} Steel Path'
-                  : 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType} Star Chart'),
+                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Steel Path'
+                  : 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Star Chart'),
               children: [
                 buildText('Faction: ${snapshot.data![index].enemy}'),
                 buildText('Node: ${snapshot.data![index].node}'),
