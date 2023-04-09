@@ -1,5 +1,12 @@
 # warframe_tracker
 
+
+This is a mobile app that tracks various events in game called Warframe developed by Digital Extremes.
+
+It uses publicly avilable API that you can find at https://docs.warframestat.us/
+
+![image](https://user-images.githubusercontent.com/23361087/230774047-336b10e8-d774-4f1e-be61-d98286f270ac.png)
+
 A new Flutter project.
 
 ## Getting Started
