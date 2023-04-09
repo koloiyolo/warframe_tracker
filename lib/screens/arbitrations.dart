@@ -79,6 +79,7 @@ class _ArbitrationsPageState extends State<ArbitrationsPage> {
                         buildText('Faction: ${snapshot.data!.enemy}'),
                         const SizedBox(height: 8),
                         buildText('Node: ${snapshot.data!.node}'),
+                        const SizedBox(height: 32)
                       ],
                     ),
                   ),

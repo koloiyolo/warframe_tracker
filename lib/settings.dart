@@ -17,13 +17,19 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              const Text('Option'),
+              buildText('Option'),
               const Expanded(child: SizedBox()),
-              ElevatedButton(onPressed: () {}, child: Text('Toggle'))
+              ElevatedButton(onPressed: () {}, child: buildText('Toggle')),
             ],
           ),
         ),
+        const Center(child: Text('Created by Jakub Kołodziej', style: TextStyle(fontSize: 15))),
+        const Center(child: Text('github.com/koloiyolo', style: TextStyle(fontSize: 15)))
       ],
     ));
   }
+  Center buildText(String text) =>
+      Center(child: Text(text, style: const TextStyle(fontSize: 20)));
+  Center buildTitle(String text) =>
+      Center(child: Text(text, style: const TextStyle(fontSize: 25)));
 }
