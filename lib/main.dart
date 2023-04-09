@@ -31,7 +31,7 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   int selectedIndex = 0;
-  Widget page = FissuresPage();
+  Widget page = const FissuresPage();
   String title = 'Void Fissures';
 
   @override

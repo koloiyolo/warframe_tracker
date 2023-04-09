@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class Fissure {
   final String id;
-  final String startString;
+  final String eta;
   final bool active;
   final String node;
   final String missionType;
@@ -14,7 +14,7 @@ class Fissure {
 
   Fissure({
     required this.id,
-    required this.startString,
+    required this.eta,
     required this.active,
     required this.node,
     required this.missionType,
@@ -27,7 +27,7 @@ class Fissure {
   factory Fissure.fromJson(Map<String, dynamic> json) {
     return Fissure(
       id: json['id'],
-      startString: json['startString'],
+      eta: json['eta'],
       active: json['active'],
       node: json['node'],
       missionType: json['missionType'],
@@ -104,7 +104,7 @@ class _FissuresPageState extends State<FissuresPage> {
                 buildText('Faction: ${snapshot.data![index].enemy}'),
                 buildText('Node: ${snapshot.data![index].node}'),
                 buildText(
-                    'Time left: ${snapshot.data![index].startString.substring(1)}')
+                    'Time left: ${snapshot.data![index].eta}')
               ],
             ),
           ),
