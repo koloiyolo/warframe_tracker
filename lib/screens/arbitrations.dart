@@ -29,7 +29,6 @@ class Arbi {
     required this.node,
     required this.enemy,
     required this.type,
-
   });
 
   factory Arbi.fromJson(Map<String, dynamic> json) {
@@ -72,7 +71,7 @@ class _ArbitrationsPageState extends State<ArbitrationsPage> {
                   child: Card(
                     child: Column(
                       children: [
-                      const SizedBox(height: 32),
+                        const SizedBox(height: 32),
                         buildTitle('Mission type:'),
                         const SizedBox(height: 8),
                         buildTitle(snapshot.data!.type),

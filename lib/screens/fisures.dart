@@ -39,21 +39,18 @@ class Fissure {
   }
 }
 
-
-Future<List<Fissure>> fetchFissures() async{
+Future<List<Fissure>> fetchFissures() async {
   var url = 'https://api.warframestat.us/pc/fissures/';
   final response = await http.get(Uri.parse(url));
 
-  if(response.statusCode==200){
+  if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
     final l = jsonResponse as List;
     return l.map((data) => Fissure.fromJson(data)).toList();
-    
-  }else{
+  } else {
     throw Exception(response.statusCode);
   }
 }
-
 
 class FissuresPage extends StatefulWidget {
   const FissuresPage({super.key});
@@ -66,54 +63,54 @@ class _FissuresPageState extends State<FissuresPage> {
   late Future<List<Fissure>> futureFissure;
 
   @override
-    void initState(){
-      super.initState();
-      futureFissure = fetchFissures();
-    }
+  void initState() {
+    super.initState();
+    futureFissure = fetchFissures();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Fissure>>(
-        future: futureFissure,
-        builder: (context, AsyncSnapshot snapshot){
-          if(snapshot.hasData){
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return listNode(snapshot, index);
+        body: FutureBuilder<List<Fissure>>(
+            future: futureFissure,
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return listNode(snapshot, index);
+                    });
+              } else if (snapshot.hasError) {
+                Text('${snapshot.error}');
               }
-            );
-
-          }else if(snapshot.hasError){
-            Text('${snapshot.error}');
-          }
-          return const Center(child: CircularProgressIndicator());
-      })
-    );
+              return const Center(child: CircularProgressIndicator());
+            }));
   }
 
   Column listNode(AsyncSnapshot<dynamic> snapshot, int index) {
     return Column(
-        children: [
-          const SizedBox(height: 16),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ExpansionTile(
-                title: buildText(snapshot.data![index].isHard 
-                ? 'Tier: ${snapshot.data![index].tier} Type: ${snapshot.data![index].missionType} Steel Path' 
-                 : 'Tier: ${snapshot.data![index].tier} Type: ${snapshot.data![index].missionType} Star Chart'),
-                children: [
-                    buildText('Faction: ${snapshot.data![index].enemy}'),
-                    buildText('Time left: ${snapshot.data![index].startString.substring(1)}')
-                ],
-              ),
+      children: [
+        const SizedBox(height: 16),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ExpansionTile(
+              title: buildText(snapshot.data![index].isHard
+                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType} Steel Path'
+                  : 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType} Star Chart'),
+              children: [
+                buildText('Faction: ${snapshot.data![index].enemy}'),
+                buildText('Node: ${snapshot.data![index].node}'),
+                buildText(
+                    'Time left: ${snapshot.data![index].startString.substring(1)}')
+              ],
             ),
           ),
-        ],
-      
+        ),
+      ],
     );
   }
+
   Center buildText(String text) =>
       Center(child: Text(text, style: const TextStyle(fontSize: 20)));
   Center buildTitle(String text) =>

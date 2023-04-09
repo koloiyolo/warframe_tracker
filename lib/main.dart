@@ -1,5 +1,3 @@
-
-
 import 'package:warframe_tracker/screens/cycles.dart';
 import 'package:warframe_tracker/screens/fisures.dart';
 
@@ -18,10 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Warframe Tracker',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.orange
-      ),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange),
       home: const NavBar(),
     );
   }
@@ -68,11 +63,11 @@ class _NavBarState extends State<NavBar> {
             NavigationBar(
               destinations: const [
                 NavigationDestination(
-                  icon: Icon(Icons.info_outline), label: 'Fissures'),
+                    icon: Icon(Icons.info_outline), label: 'Fissures'),
                 NavigationDestination(
                     icon: Icon(Icons.info_outline), label: 'Arbitration'),
                 NavigationDestination(
-                  icon: Icon(Icons.info_outline), label: 'Cycles'),
+                    icon: Icon(Icons.info_outline), label: 'Cycles'),
                 NavigationDestination(
                     icon: Icon(Icons.settings_outlined), label: 'Settings')
               ],
