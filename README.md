@@ -5,7 +5,10 @@ This is a mobile app that tracks various events in game called Warframe develope
 
 It uses publicly avilable API that you can find at https://docs.warframestat.us/
 
-![image](https://user-images.githubusercontent.com/23361087/230775100-75b429fa-4c3a-4763-9923-3bf60d9606e7.png)
+
+![image](https://user-images.githubusercontent.com/23361087/230788677-b85f9265-a74a-49a5-b958-e956dfbbf277.png)
+![image](https://user-images.githubusercontent.com/23361087/230788682-855be861-ad93-4bd4-a718-2df39d3eb0bd.png)
+
 
 A new Flutter project.
 
