@@ -97,6 +97,8 @@ class _FissuresPageState extends State<FissuresPage> {
             child: ExpansionTile(
               title: buildText(snapshot.data![index].isHard
                   ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Steel Path'
+                  : snapshot.data![index].isStorm 
+                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Void Storm'
                   : 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Star Chart'),
               children: [
                 buildText('Faction: ${snapshot.data![index].enemy}'),
