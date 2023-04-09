@@ -1,9 +1,11 @@
 # warframe_tracker
 
 
-This is a mobile app that tracks various events in game called Warframe developed by Digital Extremes.
+This is a mobile app that tracks various events in Warframe, game developed by Digital Extremes.
 
 It uses publicly avilable API that you can find at https://docs.warframestat.us/
+
+You can download and install prebuilt .apks from here https://drive.google.com/drive/folders/11z1JgpsxQIr_cy3aNtdIq5uXOizeZPwI?usp=share_link
 
 
 ![image](https://user-images.githubusercontent.com/23361087/230788677-b85f9265-a74a-49a5-b958-e956dfbbf277.png)
