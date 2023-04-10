@@ -39,7 +39,7 @@ class Arbi {
           : json['enemy']),
       type: ((json['node'].compareTo('SolNode450') == 0)
           ? "Mirror Defense"
-          : json['node']),
+          : json['type']),
     );
   }
 }
