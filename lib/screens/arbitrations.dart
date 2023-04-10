@@ -1,4 +1,3 @@
-
 import 'package:http/http.dart' as http;
 import 'package:warframe_tracker/imports.dart';
 
@@ -22,7 +21,6 @@ class Arbi {
   final String node;
   final String enemy;
   final String type;
-
   const Arbi({
     required this.id,
     required this.node,
@@ -33,9 +31,15 @@ class Arbi {
   factory Arbi.fromJson(Map<String, dynamic> json) {
     return Arbi(
       id: json['id'],
-      node: json['node'],
-      enemy: json['enemy'],
-      type: json['type'],
+      node: ((json['node'].compareTo('SolNode450') == 0)
+          ? 'Tyana Pass(Mars)'
+          : json['node']),
+      enemy: ((json['node'].compareTo('SolNode450') == 0)
+          ? 'Grenieer, Corpus'
+          : json['enemy']),
+      type: ((json['node'].compareTo('SolNode450') == 0)
+          ? "Mirror Defense"
+          : json['node']),
     );
   }
 }

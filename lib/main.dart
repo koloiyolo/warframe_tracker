@@ -16,7 +16,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Warframe Tracker',
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.orange),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        useMaterial3: true, 
+        colorSchemeSeed: Colors.orange
+        ),
+        darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        useMaterial3: true, 
+        colorSchemeSeed: Colors.orange
+        ),
+        themeMode: theme,
       home: const NavBar(),
     );
   }
