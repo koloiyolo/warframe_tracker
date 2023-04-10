@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 class Fissure {
   final String id;
   final String eta;
-  final bool active;
+ 
   final String node;
   final String missionType;
   final String enemy;
@@ -15,7 +15,7 @@ class Fissure {
   Fissure({
     required this.id,
     required this.eta,
-    required this.active,
+
     required this.node,
     required this.missionType,
     required this.enemy,
@@ -28,7 +28,6 @@ class Fissure {
     return Fissure(
       id: json['id'],
       eta: json['eta'],
-      active: json['active'],
       node: json['node'],
       missionType: json['missionType'],
       enemy: json['enemy'],
@@ -74,12 +73,71 @@ class _FissuresPageState extends State<FissuresPage> {
         body: FutureBuilder<List<Fissure>>(
             future: futureFissure,
             builder: (context, AsyncSnapshot snapshot) {
+              
               if (snapshot.hasData) {
-                return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return listNode(snapshot, index);
-                    });
+              List<Fissure> starChart =[];
+              List<Fissure> steelPath =[];
+              List<Fissure> voidStorm =[];
+              for(int i = 0; i<snapshot.data!.length; i++){
+                if(snapshot.data![i].isHard){
+                  steelPath.add(Fissure(
+                    id: snapshot.data![i].id, 
+                    eta: snapshot.data![i].eta,  
+                    node: snapshot.data![i].node, 
+                    missionType: snapshot.data![i].missionType, 
+                    enemy: snapshot.data![i].enemy, 
+                    tier: snapshot.data![i].tier, 
+                    isHard: snapshot.data![i].isHard, 
+                    isStorm: snapshot.data![i].isStorm));
+                }else if(snapshot.data![i].isStorm){
+                  voidStorm.add(Fissure(
+                    id: snapshot.data![i].id, 
+                    eta: snapshot.data![i].eta,  
+                    node: snapshot.data![i].node, 
+                    missionType: snapshot.data![i].missionType, 
+                    enemy: snapshot.data![i].enemy, 
+                    tier: snapshot.data![i].tier, 
+                    isHard: snapshot.data![i].isHard, 
+                    isStorm: snapshot.data![i].isStorm));
+                }else {
+                  starChart.add(Fissure(
+                    id: snapshot.data![i].id, 
+                    eta: snapshot.data![i].eta,  
+                    node: snapshot.data![i].node, 
+                    missionType: snapshot.data![i].missionType, 
+                    enemy: snapshot.data![i].enemy, 
+                    tier: snapshot.data![i].tier, 
+                    isHard: snapshot.data![i].isHard, 
+                    isStorm: snapshot.data![i].isStorm));
+                }}
+                if(modeToggle == 0){
+                  return ListView.builder(
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, index) {
+                            return listNode(snapshot.data!, index);
+                          });
+                }else if(modeToggle == 1){
+                  return ListView.builder(
+                            itemCount: steelPath.length,
+                            itemBuilder: (context, index) {
+                            return listNode(steelPath, index);
+                          });
+                }else if(modeToggle==2){
+                  return ListView.builder(
+                            itemCount: starChart.length,
+                            itemBuilder: (context, index) {
+                            return listNode(starChart, index);
+                          });
+                }else{
+                  return ListView.builder(
+                            itemCount: voidStorm.length,
+                            itemBuilder: (context, index) {
+                            return listNode(voidStorm, index);
+                          });
+                }
+               
+                      
+                      
               } else if (snapshot.hasError) {
                 Text('${snapshot.error}');
               }
@@ -87,7 +145,9 @@ class _FissuresPageState extends State<FissuresPage> {
             }));
   }
 
-  Column listNode(AsyncSnapshot<dynamic> snapshot, int index) {
+  
+
+  Column listNode(List<Fissure> f, int index) {
     return Column(
       children: [
         const SizedBox(height: 16),
@@ -95,16 +155,16 @@ class _FissuresPageState extends State<FissuresPage> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ExpansionTile(
-              title: buildText(snapshot.data![index].isHard
-                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Steel Path'
-                  : snapshot.data![index].isStorm 
-                  ? 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Void Storm'
-                  : 'Tier: ${snapshot.data![index].tier} Relic, Type: ${snapshot.data![index].missionType}, Star Chart'),
+              title: buildText(f[index].isHard
+                  ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Steel Path'
+                  : f[index].isStorm 
+                  ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Void Storm'
+                  : 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Star Chart'),
               children: [
-                buildText('Faction: ${snapshot.data![index].enemy}'),
-                buildText('Node: ${snapshot.data![index].node}'),
+                buildText('Faction: ${f[index].enemy}'),
+                buildText('Node: ${f[index].node}'),
                 buildText(
-                    'Time left: ${snapshot.data![index].eta}')
+                    'Time left: ${f[index].eta}')
               ],
             ),
           ),

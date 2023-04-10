@@ -1,5 +1,5 @@
 import 'package:warframe_tracker/imports.dart';
-
+int modeToggle = 3;
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -17,9 +17,20 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              buildText('Option'),
+              buildText('Fissure mode: '),
               const Expanded(child: SizedBox()),
-              ElevatedButton(onPressed: () {}, child: buildText('Toggle')),
+              ElevatedButton(onPressed: () {
+                setState(() {
+                  if(modeToggle<3){
+                    modeToggle++;
+                  }else{
+                    modeToggle=0;
+                  }
+                });
+              }, child: buildText((modeToggle==0)?'All'
+              :(modeToggle==1)?'Steel Path'
+              :(modeToggle==2)?'Star Chart'
+              :'Void Storms')),
             ],
           ),
         ),
