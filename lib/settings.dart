@@ -1,5 +1,5 @@
 import 'package:warframe_tracker/imports.dart';
-int modeToggle = 3;
+int modeToggle = 0;
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
