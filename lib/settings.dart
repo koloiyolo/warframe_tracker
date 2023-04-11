@@ -1,7 +1,6 @@
 import 'package:warframe_tracker/imports.dart';
-import 'package:warframe_tracker/main.dart';
 
-int modeToggle = 0;
+int modeFilter = 0;
 var theme = ThemeMode.system;
 
 class SettingsPage extends StatefulWidget {
@@ -27,18 +26,18 @@ class _SettingsPageState extends State<SettingsPage> {
               ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      if (modeToggle < 3) {
-                        modeToggle++;
+                      if (modeFilter < 3) {
+                        modeFilter++;
                       } else {
-                        modeToggle = 0;
+                        modeFilter = 0;
                       }
                     });
                   },
-                  child: buildText((modeToggle == 0)
+                  child: buildText((modeFilter == 0)
                       ? 'All'
-                      : (modeToggle == 1)
+                      : (modeFilter == 1)
                           ? 'Steel Path'
-                          : (modeToggle == 2)
+                          : (modeFilter == 2)
                               ? 'Star Chart'
                               : 'Void Storms')),
             ],

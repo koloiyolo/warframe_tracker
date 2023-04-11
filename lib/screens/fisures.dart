@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 class Fissure {
   final String id;
   final String eta;
-
   final String node;
   final String missionType;
   final String enemy;
@@ -109,19 +108,19 @@ class _FissuresPageState extends State<FissuresPage> {
                         isStorm: snapshot.data![i].isStorm));
                   }
                 }
-                if (modeToggle == 0) {
+                if (modeFilter == 0) {
                   return ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return listNode(snapshot.data!, index);
                       });
-                } else if (modeToggle == 1) {
+                } else if (modeFilter == 1) {
                   return ListView.builder(
                       itemCount: steelPath.length,
                       itemBuilder: (context, index) {
                         return listNode(steelPath, index);
                       });
-                } else if (modeToggle == 2) {
+                } else if (modeFilter == 2) {
                   return ListView.builder(
                       itemCount: starChart.length,
                       itemBuilder: (context, index) {
@@ -150,10 +149,10 @@ class _FissuresPageState extends State<FissuresPage> {
             padding: const EdgeInsets.all(8.0),
             child: ExpansionTile(
               title: buildText(f[index].isHard
-                  ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Steel Path'
+                  ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, \nSteel Path'
                   : f[index].isStorm
-                      ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Void Storm'
-                      : 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, Star Chart'),
+                      ? 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, \nVoid Storm'
+                      : 'Tier: ${f[index].tier} Relic, Type: ${f[index].missionType}, \nStar Chart'),
               children: [
                 buildText('Faction: ${f[index].enemy}'),
                 buildText('Node: ${f[index].node}'),
@@ -166,8 +165,8 @@ class _FissuresPageState extends State<FissuresPage> {
     );
   }
 
-  Center buildText(String text) =>
-      Center(child: Text(text, style: const TextStyle(fontSize: 20)));
+  Text buildText(String text) =>
+      Text(text, style: const TextStyle(fontSize: 17));
   Center buildTitle(String text) =>
       Center(child: Text(text, style: const TextStyle(fontSize: 25)));
 }

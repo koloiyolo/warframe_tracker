@@ -42,30 +42,33 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int selectedIndex = 0;
   Widget page = const FissuresPage();
-  String title = 'Void Fissures';
+  Text title = const Text('Void Fissures');
 
   @override
   Widget build(BuildContext context) {
     switch (selectedIndex) {
       case 0:
         page = const FissuresPage();
-        title = 'Void Fissures';
+        title = Text((modeFilter==0) ? 'Void Fissures'
+        : (modeFilter==1) ? 'Void Fissures (Steel Path)'
+        : (modeFilter==2) ? 'Void Fissures (Star Chart)'
+        : 'Void Fissures (Void Storms)');
         break;
       case 1:
         page = const ArbitrationsPage();
-        title = 'Arbitrations';
+        title = const Text('Arbitrations');
         break;
       case 2:
         page = const CyclesPage();
-        title = 'World Cycles';
+        title = const Text('World Cycles');
         break;
       case 3:
         page = const SettingsPage();
-        title = 'Settings';
+        title = const Text('Settings');
     }
     return Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: title,
         ),
         body: Column(
           children: [
