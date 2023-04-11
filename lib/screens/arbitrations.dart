@@ -21,6 +21,7 @@ class Arbi {
   final String node;
   final String enemy;
   final String type;
+
   const Arbi({
     required this.id,
     required this.node,
@@ -62,6 +63,9 @@ class _ArbitrationsPageState extends State<ArbitrationsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    var now = DateTime.now();
+
     return Scaffold(
         body: ListView(
       children: [
@@ -82,6 +86,8 @@ class _ArbitrationsPageState extends State<ArbitrationsPage> {
                         buildText('Faction: ${snapshot.data!.enemy}'),
                         const SizedBox(height: 8),
                         buildText('Node: ${snapshot.data!.node}'),
+                        const SizedBox(height: 8),
+                        buildText('Time Left: ${59 - now.minute}m ${59 - now.second}s'),
                         const SizedBox(height: 32)
                       ],
                     ),
