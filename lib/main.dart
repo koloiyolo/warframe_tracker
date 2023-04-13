@@ -55,8 +55,8 @@ class _NavBarState extends State<NavBar> {
         : 'Void Fissures (Void Storms)');
         break;
       case 1:
-        page = const ArbitrationsPage();
-        title = const Text('Arbitrations');
+        page = const EventPage();
+        title = const Text('Events');
         break;
       case 2:
         page = const CyclesPage();
@@ -78,7 +78,7 @@ class _NavBarState extends State<NavBar> {
                 NavigationDestination(
                     icon: Icon(Icons.info_outline), label: 'Fissures'),
                 NavigationDestination(
-                    icon: Icon(Icons.info_outline), label: 'Arbitration'),
+                    icon: Icon(Icons.info_outline), label: 'Events'),
                 NavigationDestination(
                     icon: Icon(Icons.info_outline), label: 'Cycles'),
                 NavigationDestination(
