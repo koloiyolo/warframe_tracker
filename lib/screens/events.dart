@@ -73,7 +73,7 @@ class _EventPageState extends State<EventPage> {
                       const SizedBox(height: 16),
                       buildText('Cost: ${snapshot.data!.cost} Steel Essence'),
                       const SizedBox(height: 8),
-                      buildText('Time left: ${7 - now.weekday}d ${24 - now.hour}h, ${60-now.minute}m'),
+                      buildText('Time left: ${7 - now.weekday}d ${23 - now.hour}h, ${59-now.minute}m'),
                       const SizedBox(height: 32),
                     ],
                   ),
